@@ -37,7 +37,7 @@ It is a scalable, Azure Kubernetes security projet that integrates, it can be do
 ## 🏗️ Architecture Overview
 
 ### 1. 📡 Overall Architecture
-!(assets/GlobalArchitecture)
+!(assets/GlobalArchitecture.jpg)
 
 - **crAPI Namespace**
   - Microservices:
@@ -83,7 +83,7 @@ It is a scalable, Azure Kubernetes security projet that integrates, it can be do
 2. **Falcosidekick** forwards events to:
    - Web interface for real-time alerts
    - Fluent Bit → Cloud Logging / Elasticsearch
-!(assets/falcoworkflow)
+!(assets/falcoworkflow.jpg)
 
 
 ---
@@ -92,7 +92,7 @@ It is a scalable, Azure Kubernetes security projet that integrates, it can be do
 
 - API Server → Gatekeeper validating webhook
 - **Rego constraints** determine whether requests are allowed or denied based on compliance rules (e.g., resource limits, naming conventions)
-!(assets/opaworkflow)
+!(assets/opaworkflow.jpg)
  
 
 ---
