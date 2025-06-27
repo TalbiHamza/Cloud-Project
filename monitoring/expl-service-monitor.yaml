@@ -1,0 +1,33 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: prometheus-operator-kubelet
+    chart: prometheus-operator-8.3.3
+    heritage: Tiller
+    release: prometheus
+  name: prometheus-prometheus-oper-kubelet
+  namespace: monitoring
+spec:
+  endpoints:
+    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      honorLabels: true
+      port: http-metrics
+      scheme: http
+      tlsConfig:
+        caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecureSkipVerify: true
+    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      honorLabels: true
+      path: /metrics/cadvisor
+      port: http-metrics
+      scheme: http
+      tlsConfig:
+        caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecureSkipVerify: true
+  jobLabel: k8s-app
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      k8s-app: kubelet
